@@ -1,0 +1,29 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#container {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+#sydebar {
+    background-color: blue;
+    grid-area: 1 / 1 / 2 / 2;
+    display: flex;
+    flex-direction: column;
+}
+
+#sydebar form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#books {
+    background-color: white;
+    color: black;
+}

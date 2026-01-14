@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Library</title>
+</head>
+<body>
+
+    <div id="container">
+        <div id="sydebar">
+            <p>OPEN BOOK TRACKER</p>
+            <p>Add your book here:</p>
+            <form>
+                <label for="bookinput">Book: </label>
+                <input type="text" id="bookinput" name="aBook">
+                <label for="author">Author: </label>
+                <input type="text" id="author" name="anAuthor">
+                <label for="pages">Pages:</label>
+                <input type="range" id="pages" name="numPages">
+                <fieldset>
+                    <legend>Have you read the book?</legend>
+                    <ul>
+                        <li>
+                            <label for="read">Yes</label>
+                            <input type="radio" id="read" name="Read">
+                        </li>
+                        <li>
+                            <label for="notRead">No</label>
+                            <input type="radio" id="notRead" name="notRead">
+                        </li>
+                    </ul>
+                </fieldset>
+                <label for="submit">Submit</label>
+                <input type="button" name="confirmBook" id="submit" value="Submit">
+            </form>
+        </div>
+        <div id="books">
+            <p>Your books:</p>
+        </div>
+    </div>
+
+</body>
+</html>
