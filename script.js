@@ -1,11 +1,12 @@
 const myLibrary = [];
 
+//standard constructor
 function Book(title, author, pages, read) {
-    // the constructor...
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.id = crypto.randomUUID(); // generate unique ID for each instance
 }
 
 function addBookToLibrary(book) {
@@ -14,7 +15,8 @@ function addBookToLibrary(book) {
 
 let submit = document.getElementById('submit');
 submit.addEventListener('click', (e) => {
-    e.preventDefault();
+    e.preventDefault(); // an event object is needed to be able to prevent the default behaviour
+    // getting the values
     let title = document.getElementById('bookinput');
     let author = document.getElementById('author');
     let read = document.querySelector('#notRead');
@@ -26,9 +28,36 @@ submit.addEventListener('click', (e) => {
     addBookToLibrary(bookling);
     console.log(myLibrary);
 
+    let display = document.querySelector("#display");
+    let card = document.createElement("div");
+    card.classList.add("cards");
+    
+    let cardText = document.createElement("h3");
+    cardText.textContent = `${title.value} by ${author.value}`;
+    
+    let removeCard = document.createElement('button');
+    removeCard.classList.add('remove');
+    removeCard.textContent = 'Remove';
+    removeCard.addEventListener('click', () => {
+        display.removeChild(card);
+    });
+
+    let status = document.createElement('button');
+    status.classList.add('status');
+    status.textContent = isRead;
+    status.addEventListener('click', () => {
+        status.textContent = (status.textContent === 'Read') ? 'Not read' : 'Read'; // if status is equal to 'Read', switch it to 'Not read', if not, switch to 'Read'
+    });
+
+    card.appendChild(cardText);
+    card.appendChild(removeCard);
+    card.appendChild(status);
+    display.appendChild(card);
+        
+    // reset values in form
     title.value = '';
     author.value = '';
     read.checked = true;
     notRead.checked = false;
-    pages.value = '';
+    pages.value = '';   
 });
