@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Library</title>
+    <script src="script.js" defer></script>
 </head>
 <body>
 
@@ -18,7 +19,7 @@
                 <label for="author">Author: </label>
                 <input type="text" id="author" name="anAuthor">
                 <label for="pages">Pages:</label>
-                <input type="range" id="pages" name="numPages">
+                <input type="number" id="pages" name="numPages">
                 <fieldset>
                     <legend>Have you read the book?</legend>
                     <ul>
@@ -28,11 +29,11 @@
                         </li>
                         <li>
                             <label for="notRead">No</label>
-                            <input type="radio" id="notRead" name="notRead">
+                            <input type="radio" id="notRead" name="Read">
                         </li>
                     </ul>
                 </fieldset>
-                <label for="submit">Submit</label>
+                <label for="submitLabel">Submit</label>
                 <input type="button" name="confirmBook" id="submit" value="Submit">
             </form>
         </div>
@@ -42,4 +43,4 @@
     </div>
 
 </body>
-</html>
+</html> 
