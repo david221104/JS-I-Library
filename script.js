@@ -8,8 +8,8 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
-function addBookToLibrary() {
-
+function addBookToLibrary(book) {
+    myLibrary.push(book);
 }
 
 let submit = document.getElementById('submit');
@@ -22,12 +22,13 @@ submit.addEventListener('click', (e) => {
     let isRead = notRead.checked ? 'Not Read' : 'Read';
     let pages = document.getElementById('pages');
 
+    let bookling = new Book (title.value, author.value, pages.value, isRead);
+    addBookToLibrary(bookling);
+    console.log(myLibrary);
+
     title.value = '';
     author.value = '';
     read.checked = true;
     notRead.checked = false;
     pages.value = '';
 });
-
-
-
