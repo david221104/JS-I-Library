@@ -11,34 +11,44 @@
 
     <div id="container">
         <div id="sydebar">
-            <p>OPEN BOOK TRACKER</p>
-            <p>Add your book here:</p>
-            <form>
-                <label for="bookinput">Book: </label>
-                <input type="text" id="bookinput" name="aBook">
-                <label for="author">Author: </label>
-                <input type="text" id="author" name="anAuthor">
-                <label for="pages">Pages:</label>
-                <input type="number" id="pages" name="numPages">
+            <p id="title">OPEN BOOK TRACKER</p>
+            <form novalidate>
+                <p>Add your book here:</p>
+                <div class="textInput">
+                    <label for="bookinput">Book: </label>
+                    <input type="text" id="bookinput" name="aBook" required>
+                </div>
+                <div class="textInput">
+                    <label for="author">Author: </label>
+                    <input type="text" id="author" name="anAuthor" required>
+                </div>
+                <div class="textInput">
+                    <label for="pages">Pages:</label>
+                    <input type="number" id="pages" name="numPages" min="1" required>
+                </div>
                 <fieldset>
                     <legend>Have you read the book?</legend>
                     <ul>
                         <li>
                             <label for="read">Yes</label>
-                            <input type="radio" id="read" name="Read">
+                            <input type="radio" id="read" name="Read" required>
                         </li>
                         <li>
                             <label for="notRead">No</label>
-                            <input type="radio" id="notRead" name="Read">
+                            <input type="radio" id="notRead" name="Read" required>
                         </li>
                     </ul>
                 </fieldset>
-                <label for="submitLabel">Submit</label>
-                <input type="button" name="confirmBook" id="submit" value="Submit">
+                <div class="buttonSubmit">
+                    <p id="error-msg" style="color: red; display: none;">Wait! You missed a field.</p>
+                    <label for="submitLabel">Submit:</label>
+                    <input type="submit" name="confirmBook" id="submit" value="Submit">
+                </div>
             </form>
         </div>
-        <div id="books">
+        <div id="bookSpace">
             <p>Your books:</p>
+            <div id="display"></div>
         </div>
     </div>
 

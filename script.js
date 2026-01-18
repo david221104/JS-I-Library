@@ -13,8 +13,8 @@ function addBookToLibrary(book) {
     myLibrary.push(book);
 }
 
-let submit = document.getElementById('submit');
-submit.addEventListener('click', (e) => {
+let submit = document.querySelector('form');
+submit.addEventListener('submit', (e) => {
     e.preventDefault(); // an event object is needed to be able to prevent the default behaviour
     // getting the values
     let title = document.getElementById('bookinput');
@@ -24,6 +24,14 @@ submit.addEventListener('click', (e) => {
     let isRead = notRead.checked ? 'Not Read' : 'Read';
     let pages = document.getElementById('pages');
 
+    let error = document.querySelector('#error-msg');
+    error.style.display = 'none';
+    if(!submit.checkValidity()) {
+        error.style.display = 'block';
+        return;
+    }
+
+
     let bookling = new Book (title.value, author.value, pages.value, isRead);
     addBookToLibrary(bookling);
     console.log(myLibrary);
@@ -32,9 +40,17 @@ submit.addEventListener('click', (e) => {
     let card = document.createElement("div");
     card.classList.add("cards");
     
+    let titleDiv = document.createElement("div")
+    titleDiv.classList.add("titleDiv");
+
     let cardText = document.createElement("h3");
     cardText.textContent = `${title.value} by ${author.value}`;
-    
+    let pageNumber = document.createElement('h3');
+    pageNumber.textContent = `${pages.value} pages`
+
+    let removeDiv = document.createElement("div");
+    removeDiv.classList.add("removeDiv");
+
     let removeCard = document.createElement('button');
     removeCard.classList.add('remove');
     removeCard.textContent = 'Remove';
@@ -42,16 +58,30 @@ submit.addEventListener('click', (e) => {
         display.removeChild(card);
     });
 
+    let statusDiv = document.createElement('div');
+    statusDiv.classList.add('statusDiv');
+
     let status = document.createElement('button');
     status.classList.add('status');
     status.textContent = isRead;
+    status.style.backgroundColor = (isRead === 'Read') ? 'green' : 'red';
     status.addEventListener('click', () => {
         status.textContent = (status.textContent === 'Read') ? 'Not read' : 'Read'; // if status is equal to 'Read', switch it to 'Not read', if not, switch to 'Read'
+        status.style.backgroundColor = (status.textContent === 'Read') ? 'green' : 'red';
     });
 
-    card.appendChild(cardText);
-    card.appendChild(removeCard);
-    card.appendChild(status);
+
+
+    titleDiv.appendChild(cardText);
+    titleDiv.appendChild(pageNumber);
+    card.appendChild(titleDiv);
+    
+    card.appendChild(statusDiv);
+    statusDiv.appendChild(status);
+    
+    removeDiv.appendChild(removeCard);
+    card.appendChild(removeDiv);
+
     display.appendChild(card);
         
     // reset values in form

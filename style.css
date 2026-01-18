@@ -1,11 +1,23 @@
+@font-face {
+    font-family: 'Jost';
+    src: url('./transfonter.org-20260118-145905/Jost-Regular.woff2') format('woff2'),
+        url('./transfonter.org-20260118-145905/Jost-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Jost', sans-serif;
 }
 
 #container {
     height: 100vh;
+    width: 100vw;
     display: grid;
     grid-template-columns: 1fr 3fr;
 }
@@ -15,15 +27,176 @@
     grid-area: 1 / 1 / 2 / 2;
     display: flex;
     flex-direction: column;
+    padding: 15px;
+}
+
+#title {
+    font-size: 1.8rem;
 }
 
 #sydebar form {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    align-items: center;
+    font-size: 1.3rem;
+    background-color: #a8a8a8;
+    margin-top: 100px;
+    padding: 15px;
+    border-radius: 10px;
+    
 }
+
+.textInput {
+    display: flex;
+    flex-direction: column;
+    width: 25rem;
+    gap: 5px;
+}
+
+.textInput input {
+    height: 30px;
+    border-radius: 10px;
+    border: solid 1px #43ffbd;
+    margin-left: 10px;
+    margin-right: 5px;
+    padding: 5px;
+} 
+
+.textInput input:focus {
+    border: solid 1px #1c9369;
+    outline: none;
+    box-shadow: 1px 1px 2px #075b3e;
+}
+
+/* Chrome */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield; /* Standard property for newer browsers */
+}
+
+fieldset {
+    width: 15rem;
+    font-size: 1.3rem;
+    border-style: none;
+}
+
+fieldset ul {
+    list-style-type: none;
+}
+
+.buttonSubmit {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+}
+
+#submit {
+    width: 120px;
+    height: 35px;
+    background-color: #43ffbd;
+    border-style: none;
+    border-radius: 6px;
+}
+
+#submit:hover {
+    transform: scale(1.05);
+    transition: transform 0.1s ease-in-out;
+    cursor: pointer;
+}
+
+/*For Javascript cards*/
+
 
 #books {
     background-color: white;
     color: black;
+}
+
+#bookSpace {
+    margin: 15px;
+}
+
+#bookSpace > p {
+    font-size: 30px;
+}
+
+#display {
+    margin: 30px;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+.cards {
+    width: 270px;
+    height: 380px;
+    background-color: rgb(14, 225, 182);
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #075b3e;
+    border-radius: 6px;
+}
+
+.titleDiv {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 40px;
+    gap: 10px;
+}
+
+.removeDiv {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    margin-top: auto;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.cards .remove {
+    height: 30px;
+    width: 80px;
+    border-radius: 8px;
+    border: 1px solid #075b3e;
+    background-color: rgb(0, 208, 215);
+}
+
+.cards .remove:hover {
+    transform: scale(1.05);
+    transition: transform 0.1s ease-in-out;
+    cursor: pointer;
+}
+
+.cards h3 {
+    color: black;
+}
+
+.statusDiv {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.status {
+    height: 40px;
+    width: 100px;
+    border-radius: 8px;
+    border: 1px solid;
+}
+
+.status:hover {
+    transform: scale(1.05);
+    transition: transform 0.1s ease-in-out;
+    cursor: pointer;
 }
