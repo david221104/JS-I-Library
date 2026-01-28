@@ -1,10 +1,3 @@
-class Library {
-    myLibrary = [];
-    addBookToLibrary(book) {
-        myLibrary.push(book);
-    }
-}
-
 class myBook {
     constructor(title, author, pages, read) {
         this.title = title;
@@ -15,9 +8,15 @@ class myBook {
     }
 }
 
-const book = new myBook('Stampedo', 'Kant', 375, true) {
-    
+class Library {
+    myLibrary = [];
+    addBookToLibrary(book) {
+        this.myLibrary.push(book);
+        console.log(this.myLibrary);
+    }
 }
+
+
 
 // let submit = document.querySelector('form');
 // submit.addEventListener('submit', (e) => {
