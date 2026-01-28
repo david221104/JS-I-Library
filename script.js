@@ -16,7 +16,79 @@ class Library {
     }
 }
 
+(function(){
+    const title = document.getElementById('bookinput');
+    const author = document.getElementById('author');
+    const pages = document.getElementById('pages');
+    const read = document.querySelector('#notRead');
+    const isRead = notRead.checked ? false : true;
+    const submit = document.querySelector('form');
+    const error = document.getElementById('error-msg');
+    error.style.display = 'none';
 
+    submit.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if(!submit.checkValidity()) {
+            error.style.display = 'block';
+            return;
+        }
+        const book = new myBook(bookinput.value, author.value, pages.value, isRead);
+        new Library().addBookToLibrary(book);
+
+        let display = document.querySelector("#display");
+        let card = document.createElement("div");
+        card.classList.add("cards");
+    
+        let titleDiv = document.createElement("div")
+        titleDiv.classList.add("titleDiv");
+
+        let cardText = document.createElement("h3");
+        cardText.textContent = `${title.value} by ${author.value}`;
+        let pageNumber = document.createElement('h3');
+        pageNumber.textContent = `${pages.value} pages`
+
+        let removeDiv = document.createElement("div");
+        removeDiv.classList.add("removeDiv");
+
+        let removeCard = document.createElement('button');
+        removeCard.classList.add('remove');
+        removeCard.textContent = 'Remove';
+        removeCard.addEventListener('click', () => {
+           display.removeChild(card);
+        });
+
+        let statusDiv = document.createElement('div');
+        statusDiv.classList.add('statusDiv');
+
+        let status = document.createElement('button');
+        status.classList.add('status');
+        status.textContent = (isRead === true) ? 'Read' : 'Not read';
+        status.style.backgroundColor = (isRead === true) ? 'green' : 'red';
+        status.addEventListener('click', () => {
+            status.textContent = (status.textContent === true) ? 'Read' : 'Not read'; // if status is equal to 'Read', switch it to 'Not read', if not, switch to 'Read'
+            status.style.backgroundColor = (status.textContent === true) ? 'green' : 'red';
+        });
+
+        titleDiv.appendChild(cardText);
+        titleDiv.appendChild(pageNumber);
+        card.appendChild(titleDiv);
+    
+        card.appendChild(statusDiv);
+        statusDiv.appendChild(status);
+    
+        removeDiv.appendChild(removeCard);
+        card.appendChild(removeDiv);
+
+        display.appendChild(card);
+        
+        //reset values in form
+        title.value = '';
+        author.value = '';
+        read.checked = true;
+        notRead.checked = false;
+        pages.value = '';   
+    });
+})();
 
 // let submit = document.querySelector('form');
 // submit.addEventListener('submit', (e) => {
@@ -95,4 +167,4 @@ class Library {
 //     read.checked = true;
 //     notRead.checked = false;
 //     pages.value = '';   
-// });
+// })
