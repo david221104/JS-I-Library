@@ -1,93 +1,99 @@
-const myLibrary = [];
-
-//standard constructor
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.id = crypto.randomUUID(); // generate unique ID for each instance
-}
-
-function addBookToLibrary(book) {
-    myLibrary.push(book);
-}
-
-let submit = document.querySelector('form');
-submit.addEventListener('submit', (e) => {
-    e.preventDefault(); // an event object is needed to be able to prevent the default behaviour
-    // getting the values
-    let title = document.getElementById('bookinput');
-    let author = document.getElementById('author');
-    let read = document.querySelector('#notRead');
-    let notRead = document.querySelector('#notRead');
-    let isRead = notRead.checked ? 'Not Read' : 'Read';
-    let pages = document.getElementById('pages');
-
-    let error = document.querySelector('#error-msg');
-    error.style.display = 'none';
-    if(!submit.checkValidity()) {
-        error.style.display = 'block';
-        return;
+class Library {
+    myLibrary = [];
+    addBookToLibrary(book) {
+        myLibrary.push(book);
     }
+}
 
+class myBook {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.id = crypto.randomUUID();  // generate unique ID for each instance
+    }
+}
 
-    let bookling = new Book (title.value, author.value, pages.value, isRead);
-    addBookToLibrary(bookling);
-    console.log(myLibrary);
-
-    let display = document.querySelector("#display");
-    let card = document.createElement("div");
-    card.classList.add("cards");
+const book = new myBook('Stampedo', 'Kant', 375, true) {
     
-    let titleDiv = document.createElement("div")
-    titleDiv.classList.add("titleDiv");
+}
 
-    let cardText = document.createElement("h3");
-    cardText.textContent = `${title.value} by ${author.value}`;
-    let pageNumber = document.createElement('h3');
-    pageNumber.textContent = `${pages.value} pages`
+// let submit = document.querySelector('form');
+// submit.addEventListener('submit', (e) => {
+//     e.preventDefault(); // an event object is needed to be able to prevent the default behaviour
+//     // getting the values
+//     let title = document.getElementById('bookinput');
+//     let author = document.getElementById('author');
+//     let read = document.querySelector('#notRead');
+//     let notRead = document.querySelector('#notRead');
+//     let isRead = notRead.checked ? 'Not Read' : 'Read';
+//     let pages = document.getElementById('pages');
 
-    let removeDiv = document.createElement("div");
-    removeDiv.classList.add("removeDiv");
-
-    let removeCard = document.createElement('button');
-    removeCard.classList.add('remove');
-    removeCard.textContent = 'Remove';
-    removeCard.addEventListener('click', () => {
-        display.removeChild(card);
-    });
-
-    let statusDiv = document.createElement('div');
-    statusDiv.classList.add('statusDiv');
-
-    let status = document.createElement('button');
-    status.classList.add('status');
-    status.textContent = isRead;
-    status.style.backgroundColor = (isRead === 'Read') ? 'green' : 'red';
-    status.addEventListener('click', () => {
-        status.textContent = (status.textContent === 'Read') ? 'Not read' : 'Read'; // if status is equal to 'Read', switch it to 'Not read', if not, switch to 'Read'
-        status.style.backgroundColor = (status.textContent === 'Read') ? 'green' : 'red';
-    });
+//     let error = document.querySelector('#error-msg');
+//     error.style.display = 'none';
+//     if(!submit.checkValidity()) {
+//         error.style.display = 'block';
+//         return;
+//     }
 
 
+//     let bookling = new Book (title.value, author.value, pages.value, isRead);
+//     addBookToLibrary(bookling);
+//     console.log(myLibrary);
 
-    titleDiv.appendChild(cardText);
-    titleDiv.appendChild(pageNumber);
-    card.appendChild(titleDiv);
+//     let display = document.querySelector("#display");
+//     let card = document.createElement("div");
+//     card.classList.add("cards");
     
-    card.appendChild(statusDiv);
-    statusDiv.appendChild(status);
-    
-    removeDiv.appendChild(removeCard);
-    card.appendChild(removeDiv);
+//     let titleDiv = document.createElement("div")
+//     titleDiv.classList.add("titleDiv");
 
-    display.appendChild(card);
+//     let cardText = document.createElement("h3");
+//     cardText.textContent = `${title.value} by ${author.value}`;
+//     let pageNumber = document.createElement('h3');
+//     pageNumber.textContent = `${pages.value} pages`
+
+//     let removeDiv = document.createElement("div");
+//     removeDiv.classList.add("removeDiv");
+
+//     let removeCard = document.createElement('button');
+//     removeCard.classList.add('remove');
+//     removeCard.textContent = 'Remove';
+//     removeCard.addEventListener('click', () => {
+//         display.removeChild(card);
+//     });
+
+//     let statusDiv = document.createElement('div');
+//     statusDiv.classList.add('statusDiv');
+
+//     let status = document.createElement('button');
+//     status.classList.add('status');
+//     status.textContent = isRead;
+//     status.style.backgroundColor = (isRead === 'Read') ? 'green' : 'red';
+//     status.addEventListener('click', () => {
+//         status.textContent = (status.textContent === 'Read') ? 'Not read' : 'Read'; // if status is equal to 'Read', switch it to 'Not read', if not, switch to 'Read'
+//         status.style.backgroundColor = (status.textContent === 'Read') ? 'green' : 'red';
+//     });
+
+
+
+//     titleDiv.appendChild(cardText);
+//     titleDiv.appendChild(pageNumber);
+//     card.appendChild(titleDiv);
+    
+//     card.appendChild(statusDiv);
+//     statusDiv.appendChild(status);
+    
+//     removeDiv.appendChild(removeCard);
+//     card.appendChild(removeDiv);
+
+//     display.appendChild(card);
         
-    // reset values in form
-    title.value = '';
-    author.value = '';
-    read.checked = true;
-    notRead.checked = false;
-    pages.value = '';   
-});
+//     // reset values in form
+//     title.value = '';
+//     author.value = '';
+//     read.checked = true;
+//     notRead.checked = false;
+//     pages.value = '';   
+// });
